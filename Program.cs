@@ -7,9 +7,33 @@ namespace acessoDadosC.NETDapperSQL
     {
         static void Main(string[] args)
         {
-            const string connectionString = "localhost,1433;Database=tucci;User ID=sa;Password=1q2w3e4r@#$"; //String de conexão com o servidor do banco de dados
+            const string connectionString = "Server=localhost,1433;Database=tucci;Integrated Security=SSPI"; //String de conexão com o servidor do banco de dados
             //Microsoft.Data.SqlClient -> Pacote de acesso
-            Console.WriteLine("Hello World!");
+
+            /*var connection = new SqlConnection(); //Como boa prática, após utilizar a conexão aberta, devemos fechar.
+            connection.Open(); //Abrindo conexão
+            //Insert
+            //Update
+            connection.Close(); //Fechando conexão*/
+
+            using (var connection = new SqlConnection(connectionString)) //Método de conexão optimizado
+            {
+                Console.WriteLine("Conectado...");
+                connection.Open();
+
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT [Id], [Title] FROM [Category]";
+
+                    var reader = command.ExecuteReader(); //Comando para executar o CommandText
+                    while (reader.Read())
+                    {
+                        Console.WriteLine($"{reader.GetGuid(0)} - {reader.GetString(1)}");
+                    }
+                }
+            }
         }
 
         //Integrated Security = SSPI

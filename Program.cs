@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
+using Dapper;
+using acessoDadosC.NETDapperSQL.Models;
 
 namespace acessoDadosC.NETDapperSQL
 {
@@ -18,7 +20,17 @@ namespace acessoDadosC.NETDapperSQL
 
             using (var connection = new SqlConnection(connectionString)) //Método de conexão optimizado
             {
-                Console.WriteLine("Conectado...");
+
+                
+                //Módulo 2
+
+                var categories = connection.Query<Category>("SELECT [Id], [Title] FROM [Category]");
+                foreach(var category in categories)
+                {
+                    Console.WriteLine($"{category.Id} - {category.Title}");
+                }
+
+                /*Módulo 1 Console.WriteLine("Conectado..."); 
                 connection.Open();
 
                 using (var command = new SqlCommand())
@@ -32,7 +44,7 @@ namespace acessoDadosC.NETDapperSQL
                     {
                         Console.WriteLine($"{reader.GetGuid(0)} - {reader.GetString(1)}");
                     }
-                }
+                } */
             }
         }
 

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tdG5uznVo5V4pu3i9TamXc9pK/y1ASukeVMYG2gAsPO3KytLTSwiH6nh0/o59Q0+RX3CKPQRvXGP+ZKa8dBtgA==",
+  "dgSpecHash": "CsciLa+bW13PmYCRRoVGGVoRXgqDfk4hEu03g+E4DCXCDvLLzSvKk1FUFE3ktfz7fg9aipX0607kDijtb1FPDQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Valmir Tucci\\Backend_C#\\acessoDadosC-.NETDapperSQL\\acessoDadosC-.NETDapperSQL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Valmir Tucci\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Valmir Tucci\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\Valmir Tucci\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Valmir Tucci\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Valmir Tucci\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Valmir Tucci\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

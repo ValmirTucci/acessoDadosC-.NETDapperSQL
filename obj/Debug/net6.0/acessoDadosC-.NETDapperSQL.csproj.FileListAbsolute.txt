@@ -48,3 +48,4 @@ C:\Users\Valmir Tucci\Backend_C#\acessoDadosC-.NETDapperSQL\obj\Debug\net6.0\ref
 C:\Users\Valmir Tucci\Backend_C#\acessoDadosC-.NETDapperSQL\obj\Debug\net6.0\acessoDadosC-.NETDapperSQL.pdb
 C:\Users\Valmir Tucci\Backend_C#\acessoDadosC-.NETDapperSQL\obj\Debug\net6.0\acessoDadosC-.NETDapperSQL.genruntimeconfig.cache
 C:\Users\Valmir Tucci\Backend_C#\acessoDadosC-.NETDapperSQL\obj\Debug\net6.0\ref\acessoDadosC-.NETDapperSQL.dll
+C:\Users\Valmir Tucci\Backend_C#\acessoDadosC-.NETDapperSQL\bin\Debug\net6.0\Dapper.dll

@@ -44,9 +44,10 @@ namespace acessoDadosC.NETDapperSQL
             {
                 //UpdateCategory(connection);
                 //CreateManyCategory(connection);
-                ListCategories(connection);
-                ExecuteProcedure(connection);
+                //ListCategories(connection);
+                //ExecuteProcedure(connection);
                 //CreateCategory(connection);
+                ExecuteReadProcedure(connection);
 
                 /*var rows = connection.Execute(insertSql, new
                 {
@@ -208,13 +209,28 @@ namespace acessoDadosC.NETDapperSQL
             }
         }
 
-        static void ExecuteProcedure(SqlConnection connection){
+        static void ExecuteProcedure(SqlConnection connection)
+        {
             var procedure = "spDeleteStudent";
-            var pars = new {StudentId="6bd552ea-7187-4bae-abb6-54e8f8b9f530"};
+            var pars = new { StudentId = "6bd552ea-7187-4bae-abb6-54e8f8b9f530" };
 
             var affectedRows = connection.Execute(procedure, pars, commandType: CommandType.StoredProcedure);
 
             Console.WriteLine($"{affectedRows} linhas afetadas");
+        }
+
+        static void ExecuteReadProcedure(SqlConnection connection)
+        {
+            var procedure = "spGetCoursesByCategory";
+            var pars = new { CategoryId = "09ce0b7b-cfca-497b-92c0-3290ad9d5142" };
+
+            var courses = connection.Query(procedure, pars, commandType: CommandType.StoredProcedure);
+
+            foreach (var item in courses)
+            {
+                Console.WriteLine(item.Title);
+
+            }
         }
     }
 }

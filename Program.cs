@@ -18,7 +18,7 @@ namespace acessoDadosC.NETDapperSQL
             //Update
             connection.Close(); //Fechando conexão*/
 
-            var category = new Category();
+            /*var category = new Category();
             category.Id = Guid.NewGuid();
             category.Title = "Amazon AWS";
             category.Url = "amazon";
@@ -37,12 +37,15 @@ namespace acessoDadosC.NETDapperSQL
                         @Summary, 
                         @Order, 
                         @Description, 
-                        @Featured)"; // Nunca concatenar string, sempre optar pela passagem de valores por parâmetro
+                        @Featured)"; // Nunca concatenar string, sempre optar pela passagem de valores por parâmetro */
 
             using (var connection = new SqlConnection(connectionString)) //Método de conexão optimizado
             {
+                UpdateCategory(connection);
+                ListCategories(connection);
+                //CreateCategory(connection);
 
-                var rowS = connection.Execute(insertSql, new
+                /*var rows = connection.Execute(insertSql, new
                 {
                     category.Id,
                     category.Title,
@@ -51,7 +54,7 @@ namespace acessoDadosC.NETDapperSQL
                     category.Order,
                     category.Description,
                     category.Featured
-                });
+                });*/
 
                 /*connection.Execute(insertSql, new{
                     category.Id, category.Title, category.Url, category.Summary, category.Order, category.Description,category.Featured
@@ -135,11 +138,13 @@ namespace acessoDadosC.NETDapperSQL
         static void UpdateCategory (SqlConnection connection)
         {
             var updateQuery = "UPDATE [Category] SET [Title] = @title WHERE [Id] = @id";
-            var rows = connection.Execute(updateQuery, new Object
+            var rows = connection.Execute(updateQuery, new
             {
                 id = new Guid("af3407aa-11ae-4621-a2ef-2028b85507c4"),
                 title = "Frontend 2021"
             });
+
+            Console.WriteLine($"{rows} registros atualizados");
         }
     }
 }

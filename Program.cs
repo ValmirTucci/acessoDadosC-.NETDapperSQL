@@ -48,7 +48,8 @@ namespace acessoDadosC.NETDapperSQL
                 //ExecuteProcedure(connection);
                 //CreateCategory(connection);
                 //ExecuteReadProcedure(connection);
-                ExecuteScalar(connection);
+                //ExecuteScalar(connection);
+                ReadView(connection);
 
                 /*var rows = connection.Execute(insertSql, new
                 {
@@ -269,6 +270,16 @@ namespace acessoDadosC.NETDapperSQL
                     category.Featured
                 });
                 Console.WriteLine($"A categoria inserida foi: {id} linhas.");
+            }
+        }
+    
+        static void ReadView(SqlConnection connection)
+        {
+            var sql = "SELECT * FROM [vwCourses]";
+            var courses = connection.Query(sql);
+            foreach (var item in courses)
+            {
+                Console.WriteLine($"{item.Id} - {item.Title}");
             }
         }
     }

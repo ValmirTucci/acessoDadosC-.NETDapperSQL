@@ -49,7 +49,8 @@ namespace acessoDadosC.NETDapperSQL
                 //CreateCategory(connection);
                 //ExecuteReadProcedure(connection);
                 //ExecuteScalar(connection);
-                ReadView(connection);
+                //ReadView(connection);
+                OneToOne(connection);
 
                 /*var rows = connection.Execute(insertSql, new
                 {
@@ -280,6 +281,29 @@ namespace acessoDadosC.NETDapperSQL
             foreach (var item in courses)
             {
                 Console.WriteLine($"{item.Id} - {item.Title}");
+            }
+        }
+    
+        static void OneToOne(SqlConnection connection)
+        {
+            var sql = @"
+            SELECT
+                *
+            FROM
+                [CareerItem]
+                INNER JOIN
+                    [Course] ON [CareerItem].[CourseId] = [Course].[Id]";
+
+            var items = connection.Query<CareerItem, Courses, CareerItem>(
+                sql,
+            (careerItem, courses) => {
+                careerItem.Courses = courses;
+                return careerItem;
+            }, splitOn: "[Id]");
+
+            foreach(var item in items)
+            {
+                Console.WriteLine($"{item.Title} - Curso: {item.Courses.Title}");
             }
         }
     }
